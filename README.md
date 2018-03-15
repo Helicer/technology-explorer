@@ -7,7 +7,7 @@ Web-based tool which helps organize information about various technologies in a 
 ## Challenge
 When learning about a technology domain, we often find ourselves encountering unfamiliar technologies, taking note of what they do, etc. After while, this becomes exhausting. This this tool aims to be a simple way to take note of the technologies you encounter, and provide bare-bones contextual information.
 
-## Proposes structure / fields
+## Proposed structure / fields
 - Category (e.g. "Database")
 - Technology name ("e.g. "Postgresql")
 - [Short name(s)] (e.g. "PSQL")
