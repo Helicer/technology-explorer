@@ -1,3 +1,14 @@
 
-Useful code / links
-https://progressive-code.com/post/10/Simple-Spring-Boot-CRUD-application-with-Thymeleaf,-JPA-and-Bootstrap
+USEFUL CODE / LINKS
+- https://progressive-code.com/post/10/Simple-Spring-Boot-CRUD-application-with-Thymeleaf,-JPA-and-Bootstrap
+
+
+DEPLOYMENT
+# Login to Pivotal PWS
+cf login -a api.run.pivotal.io - u jrogivue@pivotal.io -o JRO
+
+# Package Spring Boot app to JAR
+./mvnw clean package
+
+# Deploy to PCF
+cf push jro-tech-explorer -p target/tech-explorer-0.0.1-SNAPSHOT.jar -m 1024M --random-route

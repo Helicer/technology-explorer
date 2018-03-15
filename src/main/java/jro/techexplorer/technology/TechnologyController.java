@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
+import javax.jws.WebParam;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +18,11 @@ public class TechnologyController {
 
     @Autowired
     TechnologyService technologyService;
+
+    @RequestMapping(value="/")
+    public String home(Model model) {
+        return "redirect:/technology/list";
+    }
 
     // LIST ALL
     @RequestMapping(value= "/technology/list")
