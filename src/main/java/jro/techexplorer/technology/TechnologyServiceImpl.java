@@ -16,7 +16,7 @@ public class TechnologyServiceImpl implements TechnologyService {
 
 
     public List<Technology> findAll() {
-        return technologyRepository.findAll();
+        return technologyRepository.findAllByOrderByNameAsc();
     }
 
 

@@ -3,57 +3,78 @@
 <head th:replace="_fragments/head :: head (title ='List')" />
 <body>
 
-<!-- HEADER -->
-<div th:replace="_fragments/header :: header" />
-<!-- /HEADER -->
+    <!-- HEADER -->
+    <div th:replace="_fragments/header :: header" />
+    <!-- /HEADER -->
 
-<!-- MAIN CONTENT -->
-<div class="container">
-    <div class="starter-template">
+    <!-- NAV BREADCRUMB -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="/technology/list">List</a></li>
+            <li class="breadcrumb-item active">
+                <a th:href="@{/technology/{id}(id=${technology.id})}" th:text="${technology.name}" />
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Edit</li>
+        </ol>
+    </nav>
+    <!-- /NAV BREADCRUMB -->
 
-        <h1>Add/Edit a Technology</h1>
+    <!-- MAIN CONTENT -->
+    <div class="container">
+        <div class="starter-template">
 
-        <form th:object="${technology}"
-              th:action="@{/technology}"
-              method="post" >
+            <h1>Add/Edit a Technology</h1>
 
-            <!-- ID -->
-            <input type="hidden" th:field="*{id}" />
+            <form th:object="${technology}"
+                  th:action="@{/technology}"
+                  method="post" >
 
-            <!-- Name -->
-            <div class="form-group">
-                <label for="name">Technology Name:</label>
-                <input id="name" type="text" th:field="*{name}" />
-            </div>
+                <!-- ID -->
+                <input type="hidden" th:field="*{id}" />
 
-            <!-- Business Description -->
-            <div class="form-group">
-                <label for="business_value">Business Value:</label>
-                <textarea
-                        id="business_value"
-                        type="text"
-                        th:field="*{business_value}"
-                        placeholder="Description" />
-            </div>
+                <!-- Name -->
+                <div class="form-group">
+                    <label for="name">Technology Name:</label>
+                    <input id="name" type="text" th:field="*{name}" class="form-control" />
+                </div>
 
-            <!-- Tech Description -->
-            <div class="form-group">
-                <label for="tech_description">Tech Description:</label>
-                <textarea id="tech_description" type="text" th:field="*{tech_description}" />
-            </div>
+                <!-- Business Description -->
+                <div class="form-group">
+                    <label for="business_value">Business Value:</label>
+                    <textarea
+                            id="business_value"
+                            type="text"
+                            th:field="*{business_value}"
+                            placeholder="Business-level description"
+                            class="form-control"
+                            rows="5" />
+                </div>
+
+                <!-- Tech Description -->
+                <div class="form-group">
+                    <label for="tech_description">Tech Description:</label>
+                    <textarea
+                            id="tech_description"
+                            type="text"
+                            th:field="*{tech_description}"
+                            placeholder="Technical description"
+                            class="form-control"
+                            rows="5"/>
+                </div>
 
 
-            <button type="submit">Submit</button>
-        </form>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
 
 
-    </div> <!-- /starter-template -->
-</div> <!-- /container -->
-<!-- /MAIN CONTENT -->
+        </div> <!-- /starter-template -->
+    </div> <!-- /container -->
+    <!-- /MAIN CONTENT -->
 
-<!-- FOOTER -->
-<div th:replace="_fragments/footer :: footer" />
-<!-- /FOOTER -->
+    <!-- FOOTER -->
+    <div th:replace="_fragments/footer :: footer" />
+    <!-- /FOOTER -->
 
 
 
