@@ -1,0 +1,3 @@
+
+Useful code / links
+https://progressive-code.com/post/10/Simple-Spring-Boot-CRUD-application-with-Thymeleaf,-JPA-and-Bootstrap

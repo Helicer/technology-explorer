@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Technologies - List</title>
+</head>
+<body>
+
+<table id="technologies_table">
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Technology</th>
+            <th>Business Value</th>
+            <th>Technical description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="technology : ${technologies}">
+            <td>-</td>
+            <td><span th:text="${technology.name}" /></td>
+            <td><span th:text="${technology.business_value}" /></td>
+            <td><span th:text="${technology.tech_description}" /></td>
+        </tr>
+    </tbody>
+
+
+</table>
+
+
+</body>
+</html>
