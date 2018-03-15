@@ -1,20 +1,61 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit</title>
-</head>
+<head th:replace="_fragments/head :: head (title ='List')" />
 <body>
 
-<form th:object="${technology}" th:action="@{/technology}" method="post">
+<!-- HEADER -->
+<div th:replace="_fragments/header :: header" />
+<!-- /HEADER -->
+
+<!-- MAIN CONTENT -->
+<div class="container">
+    <div class="starter-template">
+
+        <h1>Add/Edit a Technology</h1>
+
+        <form th:object="${technology}"
+              th:action="@{/technology}"
+              method="post" >
+
+            <!-- ID -->
+            <input type="hidden" th:field="*{id}" />
+
+            <!-- Name -->
+            <div class="form-group">
+                <label for="name">Technology Name:</label>
+                <input id="name" type="text" th:field="*{name}" />
+            </div>
+
+            <!-- Business Description -->
+            <div class="form-group">
+                <label for="business_value">Business Value:</label>
+                <textarea
+                        id="business_value"
+                        type="text"
+                        th:field="*{business_value}"
+                        placeholder="Description" />
+            </div>
+
+            <!-- Tech Description -->
+            <div class="form-group">
+                <label for="tech_description">Tech Description:</label>
+                <textarea id="tech_description" type="text" th:field="*{tech_description}" />
+            </div>
 
 
-    <input type="hidden" th:field="*{id}" />
-    <label for="name">Name:</label>
-    <input id="name" type="text" th:field="*{name}" />
+            <button type="submit">Submit</button>
+        </form>
 
-    <button type="submit">Submit</button>
-</form>
+
+    </div> <!-- /starter-template -->
+</div> <!-- /container -->
+<!-- /MAIN CONTENT -->
+
+<!-- FOOTER -->
+<div th:replace="_fragments/footer :: footer" />
+<!-- /FOOTER -->
+
+
 
 </body>
 </html>

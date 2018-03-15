@@ -6,7 +6,7 @@ import java.util.Optional;
 public interface TechnologyService {
     List<Technology> findAll();
 
-    Optional<Technology> findById(Long id);
+    Technology findById(Long id);
 
     Technology save(Technology technology);
 

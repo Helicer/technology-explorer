@@ -1,31 +1,50 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <title>Technologies - List</title>
-</head>
+<head th:replace="_fragments/head :: head (title ='List')" />
 <body>
 
-<table id="technologies_table">
-    <thead>
-        <tr>
-            <th>Category</th>
-            <th>Technology</th>
-            <th>Business Value</th>
-            <th>Technical description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr th:each="technology : ${technologies}">
-            <td>-</td>
-            <td><span th:text="${technology.name}" /></td>
-            <td><span th:text="${technology.business_value}" /></td>
-            <td><span th:text="${technology.tech_description}" /></td>
-        </tr>
-    </tbody>
+    <!-- HEADER -->
+    <div th:replace="_fragments/header :: header" />
+    <!-- /HEADER -->
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+        <div class="starter-template">
+
+        <a th:href="@{/technology/add}" role="button" class="btn btn-default btn-xs">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Technology
+        </a>
 
 
-</table>
+        <table id="technologies_table" class="table">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Technology</th>
+                    <th>Business Value</th>
+                    <th>Technical description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="technology : ${technologies}">
+                    <td><!--<span th:text="${technology.category.name}" />--></td>
+                    <td><a th:href="@{/technology/{id}(id=${technology.id})}" th:text="${technology.name}" /></td>
+                    <td><span th:text="${#strings.abbreviate(technology.business_value, 100)}" /></td>
+                    <td><span th:text="${#strings.abbreviate(technology.tech_description, 100)}" /></td>
+                </tr>
+            </tbody>
+
+
+        </table>
+
+        </div> <!-- /starter-template -->
+    </div> <!-- /container -->
+    <!-- /MAIN CONTENT -->
+
+    <!-- FOOTER -->
+    <div th:replace="_fragments/footer :: footer" />
+    <!-- /FOOTER -->
+
 
 
 </body>

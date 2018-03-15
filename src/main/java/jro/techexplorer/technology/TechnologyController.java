@@ -22,7 +22,7 @@ public class TechnologyController {
     @RequestMapping(value= "/technology/list")
     public String listAll(Model model) {
         List<Technology> technologies = technologyService.findAll();
-        model.addAttribute("technology_list", technologies);
+        model.addAttribute("technologies", technologies);
         return "technology/technology_list";
 
     }
@@ -30,9 +30,14 @@ public class TechnologyController {
     // VIEW DETAIL
     @RequestMapping(value = "/technology/{id}")
     public String view(@PathVariable Long id, Model model) {
-        Optional<Technology> technology = technologyService.findById(id);
-        model.addAttribute("technology", technology);
-        return "technology/technology_view";
+        Technology technology = technologyService.findById(id);
+        if (technology != null) {
+            model.addAttribute("technology", technology);
+            return "technology/technology_view";
+        } else {
+            return "redirect:/technology/list";
+        }
+
     }
 
     // ADD (form)
@@ -48,7 +53,7 @@ public class TechnologyController {
     public String edit(@PathVariable Long id, Model model) {
 
         // TODO: Fix Optional not rendering in tempalte
-        Optional<Technology> technology = technologyService.findById(id);
+        Technology technology = technologyService.findById(id);
         model.addAttribute("technology", technology);
         return "technology/technology_edit";
     }

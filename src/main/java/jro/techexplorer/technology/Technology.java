@@ -14,8 +14,10 @@ public class Technology {
 
     public String name;
 
+    @Lob
     public String business_value;
 
+    @Lob
     public String tech_description;
 
     // TODO: Example usecases
