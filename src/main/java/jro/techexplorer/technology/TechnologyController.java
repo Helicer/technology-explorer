@@ -23,7 +23,7 @@ public class TechnologyController {
     public String listAll(Model model) {
         List<Technology> technologies = technologyService.findAll();
         model.addAttribute("technology_list", technologies);
-        return "technology_list";
+        return "technology/technology_list";
 
     }
 
@@ -32,7 +32,7 @@ public class TechnologyController {
     public String view(@PathVariable Long id, Model model) {
         Optional<Technology> technology = technologyService.findById(id);
         model.addAttribute("technology", technology);
-        return "technology_view";
+        return "technology/technology_view";
     }
 
     // ADD (form)
@@ -40,24 +40,25 @@ public class TechnologyController {
     public String add(Model model) {
         Technology technology = new Technology();
         model.addAttribute("technology", technology);
-        return "technology_edit";
+        return "technology/technology_edit";
     }
 
     // EDIT (form)
     @RequestMapping(value = "/technology/{id}/edit")
     public String edit(@PathVariable Long id, Model model) {
+
+        // TODO: Fix Optional not rendering in tempalte
         Optional<Technology> technology = technologyService.findById(id);
         model.addAttribute("technology", technology);
-        return "technology_edit";
+        return "technology/technology_edit";
     }
 
     // SAVE (POST)
-    @PostMapping(value = "/technology/{id}")
+    @PostMapping(value = "/technology")
     public String save(Model model, Technology technology) {
         technologyService.save(technology);
         model.addAttribute("technology", technology);
-        // TODO: Redirect to view
-        return "technology_view";
+        return "redirect:/technology/" + technology.id;
     }
 
 
