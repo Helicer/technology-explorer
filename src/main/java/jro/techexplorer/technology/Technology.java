@@ -14,6 +14,8 @@ public class Technology {
 
     public String name;
 
+    // TODO: Add slug to use in URLs
+
     @Lob
     public String business_value;
 

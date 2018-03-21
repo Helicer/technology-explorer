@@ -1,16 +1,16 @@
 package jro.techexplorer.technology;
 
+import org.hibernate.annotations.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-
-import javax.jws.WebParam;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
-import java.util.Optional;
+
 
 
 @Controller
@@ -43,7 +43,6 @@ public class TechnologyController {
         } else {
             return "redirect:/technology/list";
         }
-
     }
 
     // ADD (form)
@@ -74,12 +73,14 @@ public class TechnologyController {
 
 
     // DELETE
-    @RequestMapping(value = "/technology/{id}/delete")
-    public String delete(@PathVariable Long id, Model model) {
-        technologyService.delete(id);
-        List<Technology> technologies = technologyService.findAll();
-        model.addAttribute("technology_list", technologies);
-        // TODO: Redirect to List?
-        return "technology_list";
+    @PostMapping(value = "/technology/{id}/delete")
+    public String delete(@PathVariable Long id) {
+        Technology technology = technologyService.findById(id);
+        if (technology != null) {
+            technologyService.delete(id);
+            return "redirect:/technology/list";
+         } else {
+            throw new ResourceNotFoundException();
+        }
     }
 }

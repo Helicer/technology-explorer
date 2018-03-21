@@ -28,7 +28,7 @@
 
             <form th:object="${technology}"
                   th:action="@{/technology}"
-                  method="post" >
+                  th:method="post" >
 
                 <!-- ID -->
                 <input type="hidden" th:field="*{id}" />
