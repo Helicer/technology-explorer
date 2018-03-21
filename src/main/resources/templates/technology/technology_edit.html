@@ -11,9 +11,9 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="/technology/list">List</a></li>
+            <li class="breadcrumb-item"><a href="/technologies/list">List</a></li>
             <li class="breadcrumb-item active">
-                <a th:href="@{/technology/{id}(id=${technology.id})}" th:text="${technology.name}" />
+                <a th:href="@{/technologies/{id}(id=${technology.id})}" th:text="${technology.name}" />
             </li>
             <li class="breadcrumb-item active" aria-current="page">Edit</li>
         </ol>
@@ -27,7 +27,7 @@
             <h1>Add/Edit a Technology</h1>
 
             <form th:object="${technology}"
-                  th:action="@{/technology}"
+                  th:action="@{/technologies/}"
                   th:method="post" >
 
                 <!-- ID -->

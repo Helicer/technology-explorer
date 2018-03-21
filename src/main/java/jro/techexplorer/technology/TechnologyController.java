@@ -14,6 +14,7 @@ import java.util.List;
 
 
 @Controller
+@RequestMapping("/technologies")
 public class TechnologyController {
 
     @Autowired
@@ -25,7 +26,7 @@ public class TechnologyController {
     }
 
     // LIST ALL
-    @RequestMapping(value= "/technology/list")
+    @RequestMapping(value= "/list")
     public String listAll(Model model) {
         List<Technology> technologies = technologyService.findAll();
         model.addAttribute("technologies", technologies);
@@ -34,19 +35,19 @@ public class TechnologyController {
     }
 
     // VIEW DETAIL
-    @RequestMapping(value = "/technology/{id}")
+    @RequestMapping(value = "/{id}")
     public String view(@PathVariable Long id, Model model) {
         Technology technology = technologyService.findById(id);
         if (technology != null) {
             model.addAttribute("technology", technology);
             return "technology/technology_view";
         } else {
-            return "redirect:/technology/list";
+            return "redirect:/technologies/list";
         }
     }
 
     // ADD (form)
-    @RequestMapping(value = "/technology/add")
+    @RequestMapping(value = "/add")
     public String add(Model model) {
         Technology technology = new Technology();
         model.addAttribute("technology", technology);
@@ -54,31 +55,30 @@ public class TechnologyController {
     }
 
     // EDIT (form)
-    @RequestMapping(value = "/technology/{id}/edit")
+    @RequestMapping(value = "/{id}/edit")
     public String edit(@PathVariable Long id, Model model) {
 
-        // TODO: Fix Optional not rendering in tempalte
         Technology technology = technologyService.findById(id);
         model.addAttribute("technology", technology);
         return "technology/technology_edit";
     }
 
     // SAVE (POST)
-    @PostMapping(value = "/technology")
+    @PostMapping(value = "/")
     public String save(Model model, Technology technology) {
         technologyService.save(technology);
         model.addAttribute("technology", technology);
-        return "redirect:/technology/" + technology.id;
+        return "redirect:/technologies/" + technology.id;
     }
 
 
     // DELETE
-    @PostMapping(value = "/technology/{id}/delete")
+    @PostMapping(value = "/{id}/delete")
     public String delete(@PathVariable Long id) {
         Technology technology = technologyService.findById(id);
         if (technology != null) {
             technologyService.delete(id);
-            return "redirect:/technology/list";
+            return "redirect:/technologies/list";
          } else {
             throw new ResourceNotFoundException();
         }
