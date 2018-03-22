@@ -12,6 +12,7 @@ public class Technology {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     public Long id;
 
+    @Column(nullable = false)
     public String name;
 
     // TODO: Add slug to use in URLs

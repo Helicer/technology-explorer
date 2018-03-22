@@ -3,6 +3,10 @@ USEFUL CODE / LINKS
 - https://progressive-code.com/post/10/Simple-Spring-Boot-CRUD-application-with-Thymeleaf,-JPA-and-Bootstrap
 
 
+MODULES
+TAGS
+https://github.com/yairEO/tagify
+
 DEPLOYMENT
 # Login to Pivotal PWS
 cf login -a api.run.pivotal.io - u jrogivue@pivotal.io -o JRO

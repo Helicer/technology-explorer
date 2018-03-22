@@ -18,11 +18,11 @@ import java.util.List;
 public class TechnologyController {
 
     @Autowired
-    TechnologyService technologyService;
+    private TechnologyService technologyService;
 
     @RequestMapping(value="/")
-    public String home(Model model) {
-        return "redirect:/technology/list";
+    public String home() {
+        return "redirect:/technologies/list";
     }
 
     // LIST ALL
