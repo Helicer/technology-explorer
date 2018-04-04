@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments/head :: head (title =${category.name})" />
+<body>
+
+<!-- HEADER -->
+<div th:replace="_fragments/header :: header" />
+<!-- /HEADER -->
+
+
+
+<!-- MAIN CONTENT -->
+<div class="container">
+    <div class="starter-template">
+
+        <h1><span th:text="${category.name}" /></h1>
+
+        <a th:href="@{/categories/{category_id}/edit(category_id=${category.id})}" role="button" class="btn btn-default btn-xs">
+            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Category
+        </a>
+
+        <table class="table">
+            <tr th:each="technology : ${category.technologies}">
+                <a th:href="@{/technologies/{technology_id}(technology_id=${technology.id})}"
+                   th:text="${technology.name}" />
+            </tr>
+
+        </table>
+
+
+    </div> <!-- /starter-template -->
+</div> <!-- /container -->
+<!-- /MAIN CONTENT -->
+
+<!-- FOOTER -->
+<div th:replace="_fragments/footer :: footer" />
+<!-- /FOOTER -->
+
+
+</body>
+</html>

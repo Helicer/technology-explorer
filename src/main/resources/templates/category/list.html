@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments/head :: head (title ='Category List')" />
+<body>
+
+<!-- HEADER -->
+<div th:replace="_fragments/header :: header" />
+<!-- /HEADER -->
+
+
+
+<!-- MAIN CONTENT -->
+<div class="container">
+    <div class="starter-template">
+
+        <a th:href="@{/categories/add}" role="button" class="btn btn-default btn-xs">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Category
+        </a>
+
+
+        <table id="categories_table" class="table table-striped">
+            <thead>
+            <tr>
+                <th>Category</th>
+                <th>Technologies</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="category : ${categories}">
+                <td><a th:href="#" th:text="${category.name}"></td>
+                <td>- Technologies -</td>
+            </tr>
+            </tbody>
+
+
+        </table>
+
+    </div> <!-- /starter-template -->
+</div> <!-- /container -->
+<!-- /MAIN CONTENT -->
+
+<!-- FOOTER -->
+<div th:replace="_fragments/footer :: footer" />
+<!-- /FOOTER -->
+
+
+
+</body>
+</html>

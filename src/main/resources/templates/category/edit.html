@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments/head :: head (title ='Edit Category')" />
+<body>
+
+<!-- HEADER -->
+<div th:replace="_fragments/header :: header" />
+<!-- /HEADER -->
+
+
+<!-- MAIN CONTENT -->
+<div class="container">
+    <div class="starter-template">
+
+        <h1>Add/Edit a Technology</h1>
+
+        <form th:object="${category}"
+              th:action="@{/categories/}"
+              th:method="post" >
+
+            <!-- ID -->
+            <input type="hidden" th:field="*{id}" />
+
+            <!-- Name -->
+            <div class="form-group">
+                <label for="name">Category Name:</label>
+                <input id="name" type="text" th:field="*{name}" class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+
+    </div> <!-- /starter-template -->
+</div> <!-- /container -->
+<!-- /MAIN CONTENT -->
+
+<!-- FOOTER -->
+<div th:replace="_fragments/footer :: footer" />
+<!-- /FOOTER -->
+
+
+
+</body>
+</html>

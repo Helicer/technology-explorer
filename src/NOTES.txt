@@ -2,6 +2,8 @@
 USEFUL CODE / LINKS
 - https://progressive-code.com/post/10/Simple-Spring-Boot-CRUD-application-with-Thymeleaf,-JPA-and-Bootstrap
 
+SQLite support?
+
 
 MODULES
 TAGS

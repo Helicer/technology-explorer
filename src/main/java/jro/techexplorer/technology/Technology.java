@@ -23,10 +23,11 @@ public class Technology {
     @Lob
     public String tech_description;
 
+    // TODO: Category
     // TODO: Example usecases
     // TODO: Related tech
     // TODO: Links
     // TODO: Acronym / AKA
-    // TODO: Category
+
 
 }
