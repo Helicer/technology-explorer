@@ -1,24 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="_fragments/head :: head (title ='List')" />
+<head th:replace="_fragments/base :: head (title ='Edit')" />
 <body>
 
     <!-- HEADER -->
-    <div th:replace="_fragments/header :: header" />
+    <div th:replace="_fragments/base :: header" />
     <!-- /HEADER -->
+    <!------------------------------------------------->
 
-    <!-- NAV BREADCRUMB -->
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="/technologies/">List</a></li>
-            <li class="breadcrumb-item active">
-                <a th:href="@{/technologies/{id}(id=${technology.id})}" th:text="${technology.name}" />
-            </li>
-            <li class="breadcrumb-item active" aria-current="page">Edit</li>
-        </ol>
-    </nav>
-    <!-- /NAV BREADCRUMB -->
 
     <!-- MAIN CONTENT -->
     <div class="container">
@@ -72,11 +61,12 @@
     </div> <!-- /container -->
     <!-- /MAIN CONTENT -->
 
+
+
+    <!------------------------------------------------->
     <!-- FOOTER -->
-    <div th:replace="_fragments/footer :: footer" />
+    <div th:replace="_fragments/base :: footer" />
     <!-- /FOOTER -->
-
-
 
 </body>
 </html>
