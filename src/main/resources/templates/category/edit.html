@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="_fragments/head :: head (title ='Edit Category')" />
+<head th:replace="_fragments/base :: head (title ='Edit Category')" />
 <body>
 
 <!-- HEADER -->
-<div th:replace="_fragments/header :: header" />
+<div th:replace="_fragments/base :: header" />
 <!-- /HEADER -->
 
 
@@ -12,7 +12,7 @@
 <div class="container">
     <div class="starter-template">
 
-        <h1>Add/Edit a Technology</h1>
+        <h1>Add/Edit a Category</h1>
 
         <form th:object="${category}"
               th:action="@{/categories/}"
@@ -36,7 +36,7 @@
 <!-- /MAIN CONTENT -->
 
 <!-- FOOTER -->
-<div th:replace="_fragments/footer :: footer" />
+<div th:replace="_fragments/base :: footer" />
 <!-- /FOOTER -->
 
 

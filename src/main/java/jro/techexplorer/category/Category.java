@@ -9,10 +9,10 @@ import javax.persistence.*;
 @Table(name = "category")
 public class Category {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     public Long id;
 
+    @Column(nullable = false)
     public String name;
 
 }

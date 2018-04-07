@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="_fragments/head :: head (title ='Category List')" />
+<head th:replace="_fragments/base :: head (title ='Category List')" />
 <body>
 
 <!-- HEADER -->
-<div th:replace="_fragments/header :: header" />
+<div th:replace="_fragments/base :: header" />
 <!-- /HEADER -->
 
 
@@ -27,7 +27,7 @@
             </thead>
             <tbody>
             <tr th:each="category : ${categories}">
-                <td><a th:href="#" th:text="${category.name}"></td>
+                <td><a th:href="@{/categories/{id}(id=${category.id})}" th:text="${category.name}"></td>
                 <td>- Technologies -</td>
             </tr>
             </tbody>
@@ -40,7 +40,7 @@
 <!-- /MAIN CONTENT -->
 
 <!-- FOOTER -->
-<div th:replace="_fragments/footer :: footer" />
+<div th:replace="_fragments/base :: footer" />
 <!-- /FOOTER -->
 
 
