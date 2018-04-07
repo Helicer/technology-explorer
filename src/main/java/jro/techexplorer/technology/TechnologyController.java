@@ -1,7 +1,6 @@
 package jro.techexplorer.technology;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,17 +15,13 @@ public class TechnologyController {
     @Autowired
     private TechnologyService technologyService;
 
-    @RequestMapping(value="/")
-    public String home() {
-        return "redirect:/technologies/list";
-    }
 
     // LIST ALL
-    @RequestMapping(value= "/list")
+    @RequestMapping(value= "/")
     public String listAll(Model model) {
         List<Technology> technologies = technologyService.findAll();
         model.addAttribute("technologies", technologies);
-        return "technology/technology_list";
+        return "technology/list";
 
     }
 
@@ -36,9 +31,9 @@ public class TechnologyController {
         Technology technology = technologyService.findById(id);
         if (technology != null) {
             model.addAttribute("technology", technology);
-            return "technology/technology_view";
+            return "technology/view";
         } else {
-            return "redirect:/technologies/list";
+            return "redirect:/technologies/";
         }
     }
 
@@ -47,16 +42,15 @@ public class TechnologyController {
     public String add(Model model) {
         Technology technology = new Technology();
         model.addAttribute("technology", technology);
-        return "technology/technology_edit";
+        return "technology/edit";
     }
 
     // EDIT (form)
     @RequestMapping(value = "/{id}/edit")
     public String edit(@PathVariable Long id, Model model) {
-
         Technology technology = technologyService.findById(id);
         model.addAttribute("technology", technology);
-        return "technology/technology_edit";
+        return "technology/edit";
     }
 
     // SAVE (POST)
@@ -74,9 +68,9 @@ public class TechnologyController {
         Technology technology = technologyService.findById(id);
         if (technology != null) {
             technologyService.delete(id);
-            return "redirect:/technologies/list";
+            return "redirect:/technologies/";
          } else {
-            throw new ResourceNotFoundException();
+            return "redirect:/technologies/";
         }
     }
 }
