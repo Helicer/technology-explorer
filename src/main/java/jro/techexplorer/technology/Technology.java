@@ -1,5 +1,6 @@
 package jro.techexplorer.technology;
 
+import jro.techexplorer.category.Category;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -22,6 +23,11 @@ public class Technology {
 
     @Lob
     public String tech_description;
+
+    // TODO: Connect foreign relations
+    @ManyToOne
+    @JoinColumn(name = "cateoory_id")
+    public Category category;
 
     // TODO: Category
     // TODO: Example usecases

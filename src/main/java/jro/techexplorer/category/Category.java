@@ -1,8 +1,10 @@
 package jro.techexplorer.category;
 
+import jro.techexplorer.technology.Technology;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity
@@ -14,5 +16,9 @@ public class Category {
 
     @Column(nullable = false)
     public String name;
+
+    // TODO: Connect foreign relations
+    @OneToMany(mappedBy = "category")
+    public Set<Technology> technologies;
 
 }
